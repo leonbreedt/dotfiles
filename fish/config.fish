@@ -9,4 +9,4 @@ end
 set -gx NIX_PATH $HOME/.nix-defexpr
 
 # Path
-set -gx PATH $HOME/.cargo/bin $PATH
+set -gx PATH $HOME/.cargo/bin $nix_profile/bin $PATH
