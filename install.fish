@@ -58,8 +58,8 @@ function bootstrap_homemanager -d "installs home-manager and activates configura
   end
   set -gx PATH $nix_profile/bin $PATH
 
-  # make sure nix-shell uses same expression as nix-env
-  set -gx NIX_PATH $HOME/.nix-defexpr
+  # make sure nix-shell and other tools use same expression as nix-env
+  set -gx NIX_PATH $HOME/.nix-defexpr $HOME/.nix-defexpr/channels
 
   if ! command -q home-manager
     info 'installing home-manager'

@@ -43,7 +43,7 @@
     shellInit = ''
       source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
       set -gx PATH /nix/var/nix/profiles/default/bin $PATH
-      set -gx NIX_PATH $HOME/.nix-defexpr
+      set -gx NIX_PATH $HOME/.nix-defexpr $HOME/.nix-defexpr/channels
     '';
   };
 
@@ -83,7 +83,7 @@
       ]))
     ];
     
-    extraConfig = builtins.readFile ./nvim/config;
+    extraConfig = builtins.readFile ./config/nvim;
 
     # Language servers
     extraPackages = with pkgs; [
