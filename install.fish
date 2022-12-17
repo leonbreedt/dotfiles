@@ -63,6 +63,7 @@ function bootstrap_homemanager -d "installs home-manager and activates configura
 
   if ! command -q home-manager
     info 'installing home-manager'
+    nix-channel --add https://github.com/nix-community/home-manager/archive/release-22.11.tar.gz home-manager
     nix-channel --update
     nix-shell '<home-manager>' -A install
   else
