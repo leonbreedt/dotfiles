@@ -1,10 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  home.stateVersion = "22.11";
+
   home.username = "leon";
   home.homeDirectory = "/Users/leon";
-
-  home.stateVersion = "22.11";
 
   # user-specific packages
   home.packages = with pkgs; [
@@ -53,6 +53,52 @@
     vimAlias = true;
     plugins = with pkgs; [
       vimPlugins.lightline-vim
+
+      # LSP
+      vimPlugins.nvim-lspconfig
+
+      # languages
+      vimPlugins.rust-vim
+      vimPlugins.vim-nix
+
+      # completion
+      vimPlugins.cmp-nvim-lsp
+      vimPlugins.cmp-buffer
+      vimPlugins.cmp-path
+      vimPlugins.cmp-cmdline
+      vimPlugins.nvim-cmp
+      vimPlugins.cmp-vsnip
+      vimPlugins.vim-vsnip
+
+      # popups
+      vimPlugins.popfix
+
+      # tree sitter
+      (vimPlugins.nvim-treesitter.withPlugins (plugins: with plugins; [
+        tree-sitter-c
+        tree-sitter-cpp
+        tree-sitter-go
+        tree-sitter-nix
+        tree-sitter-rust
+      ]))
     ];
+    
+    extraConfig = builtins.readFile ./nvim/config;
+
+    # Language servers
+    extraPackages = with pkgs; [
+      rust-analyzer
+      gopls
+    ];
+  };
+
+  programs.gpg.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    pinentryFlavor = "tty";
+
+    # cache the keys forever so we don't get asked for a password
+    defaultCacheTtl = 31536000;
+    maxCacheTtl = 31536000;
   };
 }
