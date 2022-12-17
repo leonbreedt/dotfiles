@@ -45,6 +45,17 @@
       set -gx PATH /nix/var/nix/profiles/default/bin $PATH
       set -gx NIX_PATH $HOME/.nix-defexpr $HOME/.nix-defexpr/channels
     '';
+    plugins = [
+      {
+        name = "theme-bobthefish";
+        src = pkgs.fetchFromGitHub {
+          owner = "oh-my-fish";
+          repo = "theme-bobthefish";
+          rev = "2dcfcab653ae69ae95ab57217fe64c97ae05d8de";
+          sha256 = "sha256-jBbm0wTNZ7jSoGFxRkTz96QHpc5ViAw9RGsRBkCQEIU=";
+        };
+      }
+    ];
   };
 
   programs.neovim = {
@@ -96,7 +107,9 @@
   };
 
   programs.gpg.enable = true;
+  programs.direnv.enable = true;
 
+  # Overlays
   nixpkgs.overlays = [
     (self: super:
       {
