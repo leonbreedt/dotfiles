@@ -9,4 +9,5 @@ with import <nixpkgs> {}; [
   shellcheck
   tree
   bat
+  wrk
 ]

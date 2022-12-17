@@ -45,6 +45,13 @@ function install_dotfiles -d "installs dotfiles by linking them to $DF_TARGET"
     or fail fish
   link_file $DF_ROOT/kitty/kitty.conf $HOME/.config/kitty.conf prev
     or fail kitty
+
+  link_file $DF_ROOT/nix-defexpr/default.nix $HOME/.nix-defexpr/default.nix prev
+    or fail nix
+  link_file $DF_ROOT/nix-defexpr/home-manager/default.nix $HOME/.nix-defexpr/home-manager/default.nix prev
+    or fail nix
+  link_file $DF_ROOT/nix-defexpr/nixpkgs/default.nix $HOME/.nix-defexpr/nixpkgs/default.nix prev
+    or fail nix
 end
 
 if ! grep -q (command -v fish) /etc/shells
