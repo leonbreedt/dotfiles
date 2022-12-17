@@ -40,6 +40,11 @@
       gs = "git status";
       gt = "git tag";
     };
+    shellInit = ''
+      source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
+      set -gx PATH /nix/var/nix/profiles/default/bin $PATH
+      set -gx NIX_PATH $HOME/.nix-defexpr
+    '';
   };
 
   programs.neovim = {

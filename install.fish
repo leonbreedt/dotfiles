@@ -43,11 +43,6 @@ end
 function install_dotfiles -d "installs dotfiles by linking them to $DF_TARGET"
   # install the bare minimum dotfiles to make home-manager work,
   # manage the rest with home-manager
-  link_file $DF_ROOT/fish/config.fish $HOME/.config/fish/config.fish prev
-    or fail fish
-  link_file $DF_ROOT/kitty/kitty.conf $HOME/.config/kitty.conf prev
-    or fail kitty
-
   link_file $DF_ROOT/nix-defexpr/default.nix $HOME/.nix-defexpr/default.nix prev
     or fail nix
   link_file $DF_ROOT/nix-defexpr/home-manager/default.nix $HOME/.nix-defexpr/home-manager/default.nix prev
@@ -70,6 +65,7 @@ function bootstrap_homemanager -d "installs home-manager and activates configura
 
   if ! command -q home-manager
     info 'installing home-manager'
+    nix-channel --update
     nix-shell '<home-manager>' -A install
   else
     skip 'home-manager already installed'
