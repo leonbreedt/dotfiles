@@ -107,6 +107,7 @@
       credential.helper = "store";
       github.user = "leonbreedt";
       push.default = "tracking";
+      pull.rebase = true;
       init.defaultBranch = "main";
     };
   };
