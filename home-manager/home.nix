@@ -17,7 +17,7 @@
   };
 
   # managed config files
-  home.file.".config/kitty/kitty.conf" = ./config/kitty;
+  home.file.".config/kitty/kitty.conf".source = ./config/kitty;
   home.file.".gnupg/gpg-agent.conf".source = ./config/gpg-agent;
   home.file.".gnupg/pubring.gpg".source = ../private/pubring.gpg;
   home.file.".gnupg/secring.gpg".source = ../private/secring.gpg;
