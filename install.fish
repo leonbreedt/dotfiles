@@ -72,6 +72,9 @@ function bootstrap_homemanager -d "installs home-manager and activates configura
   link_file $DF_ROOT/home-manager/home.nix $HOME/.config/nixpkgs/home.nix prev
     or fail home-manager
 
+  # fish config will now be managed by home-manager
+  rm -f $HOME/.config/fish/config.fish
+
   home-manager switch
 end
 
@@ -85,9 +88,19 @@ function register_shell -d "registers a shell in /etc/shells"
   end
 end
 
-register_shell (command -v fish)
+function set_shell -d "sets the current user shell to fish"
+  if [ "$SHELL" != "$DF_FISH_PATH" ]
+    chsh -s $argv
+  end
+end
+
+set DF_FISH_PATH (command -v fish)
+
+register_shell $DF_FISH_PATH
 
 install_dotfiles
 bootstrap_homemanager
 
-success 'installation finished'
+set_shell $DF_FISH_PATH
+
+success 'installation finished, log out and back in to see changes'

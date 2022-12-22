@@ -6,6 +6,19 @@
   home.username = "leon";
   home.homeDirectory = "/Users/leon";
 
+  home.sessionVariables = {
+    TERM = "xterm-256color";
+    LANG = "en_US.UTF-8";
+    LC_CTYPE = "en_US.UTF-8";
+    LC_ALL = "en_US.UTF-8";
+    EDITOR = "nvim";
+    PAGER = "bat -p";
+    MANPAGER = "bat -p";
+  };
+
+  # managed config files
+  home.file.".gnupg/gpg-agent.conf".source = ./config/gpg-agent;
+
   # user-specific packages
   home.packages = with pkgs; [
     bat
@@ -16,6 +29,7 @@
     htop
     jdk
     jq
+    pinentry
     pwgen
     ripgrep
     shellcheck
@@ -23,6 +37,8 @@
     wrk
     xsv
   ];
+
+  # programs
 
   programs.home-manager.enable = true;
 
@@ -39,11 +55,16 @@
       gp = "git push";
       gs = "git status";
       gt = "git tag";
+      cat = "bat -p";
     };
     shellInit = ''
+      # Nix paths
       source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
       set -gx PATH /nix/var/nix/profiles/default/bin $PATH
       set -gx NIX_PATH $HOME/.nix-defexpr $HOME/.nix-defexpr/channels
+
+      # Git commit signing
+      set -gx GPG_TTY (tty)
     '';
     plugins = [
       {
@@ -56,6 +77,38 @@
         };
       }
     ];
+  };
+
+  programs.git = {
+    enable = true;
+    userName = "Leon Breedt";
+    userEmail = "leon@sector42.io";
+    signing = {
+      key = "8EDF16F241C988805D6019FDC7FC3270F57FA785";
+      signByDefault = true;
+    };
+    aliases = {
+      co = "checkout";
+      ca = "commit --all";
+      fa = "fetch --all";
+      fap = "!git fetch --all && git pull --autostash";
+      lg = "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(r) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative";
+      st = "status";
+      root = "rev-parse --show-toplevel";
+    };
+    extraConfig = {
+      branch.autosetuprebase = "always";
+      color.ui = true;
+      color.diff = "auto";
+      color.status = "auto";
+      color.interactive = "auto";
+      color.pager = true;
+      core.askPass = "";
+      credential.helper = "store";
+      github.user = "leonbreedt";
+      push.default = "tracking";
+      init.defaultBranch = "main";
+    };
   };
 
   programs.neovim = {
@@ -73,6 +126,7 @@
       # languages
       vimPlugins.rust-vim
       vimPlugins.vim-nix
+      vimPlugins.vim-fish
 
       # completion
       vimPlugins.cmp-nvim-lsp
