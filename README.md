@@ -1,20 +1,47 @@
 # dotfiles
 
-## setup
+## Setup
 
-First, install Nix, as we will be getting all our packages from there, even our
-shells.
+### macOS
 
-```shell
-sh <(curl -L https://nixos.org/nix/install)
-```
+*Last tested on a clean macOS Ventura 13.1 installation.*
 
-Run `nix-env -iA nixpkgs.fish`, and make sure `fish` is in the `PATH`.
+This assumes a clean macOS installation with nothing else on it yet.
 
-Then, run `./install.fish` to finish setting up, and install [home-manager](https://nix-community.github.io/home-manager/index.html).
+- Open Terminal, run `git`, install Command Line Developer Tools if prompted.
 
-## use
+- Clone this repository into `$HOME/.dotfiles`.
 
-Install everything else via home-manager by editing `$HOME/.config/nixpkgs/home.nix`,
-and the `home-manager switch` command.
+  ```shell
+  git clone https://github.com/leonbreedt/dotfiles $HOME/.dotfiles
+  ```
 
+- Install Nix
+
+  ```shell
+  sh <(curl -L https://nixos.org/nix/install)
+  ```
+
+- Restart the Terminal so that the `nix-env` command is on the `PATH`, it got
+  there by the Nix installer updating `/etc/zshrc` and `/etc/bashrc`.
+
+- Install the [fish](https://fishshell.com) shell using Nix.
+
+  ```shell
+  nix-env -iA nixpkgs.fish
+  ```
+
+- Run the setup script, this will prompt you for your password as it runs
+  `sudo` to add [home-manager](https://rycee.gitlab.io/home-manager/) to the
+  system Nix channels.
+
+  ```shell
+  cd $HOME/.dotfiles
+  ./install.fish
+  ```
+
+
+## Use
+
+Install everything else via *home-manager* by editing `$HOME/.config/nixpkgs/home.nix`,
+and then running the `home-manager switch` command.
