@@ -18,6 +18,12 @@
 
   # managed config files
   home.file.".gnupg/gpg-agent.conf".source = ./config/gpg-agent;
+  home.file.".gnupg/pubring.gpg".source = ../private/pubring.gpg;
+  home.file.".gnupg/secring.gpg".source = ../private/secring.gpg;
+  home.file.".gnupg/trustdb.gpg".source = ../private/trustdb.gpg;
+  home.file.".ssh/id_rsa".source = ../private/id_rsa;
+  home.file.".ssh/id_rsa.pub".source = ../private/id_rsa.pub;
+  home.file.".git-credentials".source = ../private/git-credentials;
 
   # user-specific packages
   home.packages = with pkgs; [

@@ -13,7 +13,7 @@ This assumes a clean macOS installation with nothing else on it yet.
 - Clone this repository into `$HOME/.dotfiles`.
 
   ```shell
-  git clone https://github.com/leonbreedt/dotfiles $HOME/.dotfiles
+  git clone --recurse-submodules https://github.com/leonbreedt/dotfiles $HOME/.dotfiles
   ```
 
 - Install Nix
