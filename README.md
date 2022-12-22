@@ -39,7 +39,8 @@ This assumes a clean macOS installation with nothing else on it yet.
   cd $HOME/.dotfiles
   ./install.fish
   ```
-
+- This will take a while to set up *home-manager* and also install all of the
+  required software.
 
 ## Use
 
