@@ -64,9 +64,12 @@
       cat = "bat -p";
     };
     shellInit = ''
-      # Nix paths
-      source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
-      set -gx PATH /nix/var/nix/profiles/default/bin $PATH
+      if test -e /nix/var/nix/profiles/default/etc/profile.d/nix.fish
+        # Nix paths on macOS
+        source /nix/var/nix/profiles/default/etc/profile.d/nix.fish
+        set -gx PATH /nix/var/nix/profiles/default/bin $PATH
+      end
+
       set -gx NIX_PATH $HOME/.nix-defexpr $HOME/.nix-defexpr/channels
 
       # Git commit signing
