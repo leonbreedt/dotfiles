@@ -90,7 +90,7 @@ end
 
 function set_shell -d "sets the current user shell to fish"
   if [ "$SHELL" != "$DF_FISH_PATH" ]
-    chsh -s $argv
+    sudo chsh -s $argv
   end
 end
 

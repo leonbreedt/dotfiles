@@ -39,8 +39,68 @@ This assumes a clean macOS installation with nothing else on it yet.
   cd $HOME/.dotfiles
   ./install.fish
   ```
+
 - This will take a while to set up *home-manager* and also install all of the
   required software.
+
+### Windows (WSL)
+
+- Download the latest NixOS release from <https://github.com/nix-community/NixOS-WSL>,
+  and install it:
+
+  ```shell
+  cd $DISTRODIR
+  wsl --import NixOS-22.05 .\NixOS\ nixos-wsl-installer.tar.gz --version 2
+  ```
+
+- Start it, either via Terminal drop-down, or:
+
+  ```shell
+  wsl -d NixOS-22.05
+  ```
+
+  On first start it will do a bunch of setup actions, then start systemd. If
+  it hangs starting systemd, this may be <https://github.com/nix-community/NixOS-WSL/issues/156>.
+  If so, run `wsl --shutdown` in a separate terminal and restart it.
+
+- Edit `/etc/nixos/configuration.nix` with `nano`:
+
+    ```nix
+    wsl.defaultUser = "leon";
+    wsl.docker-native.enable = true;
+
+    environment.systemPackages = [ pkgs.fish pkgs.git ];
+
+    users.users.leon = {
+      isNormalUser = true;
+      home = "/home/leoexn";
+      description = "Leon Breedt";
+      extraGroups = [ "wheel" "docker" ];
+      shell = pkgs.fish;
+    };
+    ```
+
+- Run `sudo nixos-rebuild switch` to ensure fish is installed and custom user created,
+  restart the terminal.
+
+- Make it the default WSL distribution (in a separate terminal window):
+
+  ```shell
+  wsl -s NixOS-22.05
+  ```
+
+- Clone this repository into `$HOME/.dotfiles`.
+
+  ```shell
+  git clone --recurse-submodules https://github.com/leonbreedt/dotfiles $HOME/.dotfiles
+  ```
+
+- Run the setup script:
+
+  ```shell
+  cd $HOME/.dotfiles
+  ./install.fish
+  ```
 
 ## Use
 

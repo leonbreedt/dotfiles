@@ -4,7 +4,7 @@
   home.stateVersion = "22.11";
 
   home.username = "leon";
-  home.homeDirectory = "/Users/leon";
+  home.homeDirectory = if pkgs.stdenv.isLinux then "/home/leon" else "/Users/leon";
 
   home.sessionVariables = {
     TERM = "xterm-256color";
@@ -17,7 +17,7 @@
   };
 
   # managed config files
-  home.file.".gnupg/gpg-agent.conf".source = ./config/gpg-agent;
+  home.file.".gnupg/gpg-agent.conf".source = if pkgs.stdenv.isLinux then ./config/gpg-agent-linux else ./config/gpg-agent-darwin;
   home.file.".gnupg/pubring.gpg".source = ../private/pubring.gpg;
   home.file.".gnupg/secring.gpg".source = ../private/secring.gpg;
   home.file.".gnupg/trustdb.gpg".source = ../private/trustdb.gpg;
