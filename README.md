@@ -65,7 +65,7 @@ This assumes a clean macOS installation with nothing else on it yet.
 
 - Edit `/etc/nixos/configuration.nix` with `nano`:
 
-    ```nix
+    ```plaintext
     wsl.defaultUser = "leon";
     wsl.docker-native.enable = true;
 
@@ -73,7 +73,7 @@ This assumes a clean macOS installation with nothing else on it yet.
 
     users.users.leon = {
       isNormalUser = true;
-      home = "/home/leoexn";
+      home = "/home/leon";
       description = "Leon Breedt";
       extraGroups = [ "wheel" "docker" ];
       shell = pkgs.fish;
