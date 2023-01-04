@@ -78,7 +78,7 @@
       # JetBrains shell scripts
       if test -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
         # macOS
-        set -gx PATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+        set -gx PATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" $PATH
       end
 
       # Git commit signing
