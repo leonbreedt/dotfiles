@@ -5,6 +5,8 @@ font_size 13.0
 cursor_blink_interval 	0
 window_padding_width 4
 
+cursor_shape beam
+
 foreground            #dcdfe4
 background            #282c34
 macos_titlebar_color  #282c34
