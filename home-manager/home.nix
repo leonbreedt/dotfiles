@@ -31,6 +31,7 @@
     du-dust
     exa
     fd
+    flyctl
     fzf
     htop
     jdk
@@ -39,6 +40,7 @@
     pwgen
     ripgrep
     shellcheck
+    terraform
     tree
     wrk
     xsv
