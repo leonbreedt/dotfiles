@@ -75,6 +75,12 @@
 
       set -gx NIX_PATH $HOME/.nix-defexpr $HOME/.nix-defexpr/channels
 
+      # JetBrains shell scripts
+      if test -d "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+        # macOS
+        set -gx PATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+      end
+
       # Git commit signing
       set -gx GPG_TTY (tty)
     '';
