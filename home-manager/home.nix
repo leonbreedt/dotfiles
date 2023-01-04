@@ -27,6 +27,7 @@
 
   # user-specific packages
   home.packages = with pkgs; [
+    awscli
     bat
     du-dust
     exa
