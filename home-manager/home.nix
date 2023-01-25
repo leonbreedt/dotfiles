@@ -38,6 +38,7 @@
     jdk
     maven
     nodejs-16_x
+    jetbrains-mono
     jq
     pinentry
     pwgen
