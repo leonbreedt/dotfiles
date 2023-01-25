@@ -93,7 +93,7 @@
       set -gx GPG_TTY (tty)
 
       # CDPATH for work
-      set -tx CDPATH $HOME/SAPDevelop
+      set -gx CDPATH $HOME/SAPDevelop
     '';
     plugins = [
       {
