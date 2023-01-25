@@ -35,9 +35,6 @@
     flyctl
     fzf
     htop
-    jdk
-    maven
-    nodejs-16_x
     jetbrains-mono
     jq
     pinentry
@@ -48,6 +45,12 @@
     tree
     wrk
     xsv
+
+    # work
+    jdk
+    maven
+    nodejs-16_x
+    git-lfs
   ];
 
   # programs
@@ -86,6 +89,9 @@
 
       # Git commit signing
       set -gx GPG_TTY (tty)
+
+      # CDPATH for work
+      set -tx CDPATH $HOME/SAPDevelop
     '';
     plugins = [
       {
