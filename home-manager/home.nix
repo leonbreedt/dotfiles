@@ -36,6 +36,8 @@
     fzf
     htop
     jdk
+    maven
+    nodejs-16_x
     jq
     pinentry
     pwgen
