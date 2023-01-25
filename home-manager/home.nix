@@ -39,6 +39,7 @@
     fzf
     htop
     jq
+    neofetch
     pinentry
     pwgen
     ripgrep
