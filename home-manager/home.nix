@@ -45,6 +45,10 @@
     wrk
     xsv
 
+    # rust
+    rustc
+    cargo
+
     # fonts
     jetbrains-mono
     cascadia-code
@@ -56,6 +60,7 @@
     git-lfs
     google-java-format
     chromedriver
+    cloudfoundry-cli
   ];
 
   # programs
