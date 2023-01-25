@@ -14,6 +14,9 @@
     EDITOR = "nvim";
     PAGER = "bat -p";
     MANPAGER = "bat -p";
+
+    # allow rust-analyzer to find the Rust source
+    RUST_SRC_PATH = "${pkgs.rust.packages.stable.rustPlatform.rustLibSrc}";
   };
 
   # managed config files
