@@ -52,6 +52,7 @@
     nodejs-16_x
     git-lfs
     google-java-format
+    chromedriver
   ];
 
   # programs
