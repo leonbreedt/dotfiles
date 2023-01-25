@@ -35,7 +35,6 @@
     flyctl
     fzf
     htop
-    jetbrains-mono
     jq
     pinentry
     pwgen
@@ -45,6 +44,10 @@
     tree
     wrk
     xsv
+
+    # fonts
+    jetbrains-mono
+    cascadia-code
 
     # work
     jdk

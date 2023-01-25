@@ -1,6 +1,6 @@
 # List with kitty +list-fonts
-font_family JetBrains Mono Medium
-font_size 13.0
+font_family Cascadia Mono PL Semibold
+font_size 15.0
 
 cursor_blink_interval 	0
 window_padding_width 4
