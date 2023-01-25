@@ -49,6 +49,9 @@
     wrk
     xsv
 
+    # needed for using tailwind LSP with fleet
+    nodePackages."@tailwindcss/language-server"
+
     # rust
     rustc
     cargo
