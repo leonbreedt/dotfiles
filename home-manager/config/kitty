@@ -1,6 +1,6 @@
 # List with kitty +list-fonts
-font_family Cascadia Mono PL Semibold
-font_size 15.0
+font_family SF Mono
+font_size 11
 
 cursor_blink_interval 	0
 window_padding_width 4
@@ -13,6 +13,9 @@ macos_titlebar_color  #282c34
 selection_foreground  #000000
 selection_background  #fffacd
 url_color             #0087bd
+
+confirm_os_window_close 0
+macos_thicken_font 0.75
 
 # black
 color0   #282c34
