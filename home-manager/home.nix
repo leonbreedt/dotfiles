@@ -49,6 +49,8 @@
     wrk
     xsv
 
+    # frontend
+    nodePackages.pnpm
     # needed for using tailwind LSP with fleet
     nodePackages."@tailwindcss/language-server"
 
