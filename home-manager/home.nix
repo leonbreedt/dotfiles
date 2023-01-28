@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  nixpkgs.config.allowUnfree = true;
+
   home.stateVersion = "22.11";
 
   home.username = "leon";
@@ -70,6 +72,7 @@
     google-java-format
     chromedriver
     cloudfoundry-cli
+    vscode
   ];
 
   # programs
