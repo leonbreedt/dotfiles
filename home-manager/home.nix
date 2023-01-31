@@ -60,6 +60,7 @@
     rustc
     rustfmt
     cargo
+    clippy
 
     # fonts
     jetbrains-mono
