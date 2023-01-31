@@ -58,6 +58,7 @@
 
     # rust
     rustc
+    rustfmt
     cargo
 
     # fonts
