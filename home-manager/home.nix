@@ -111,6 +111,11 @@
         set -gx PATH "$HOME/Library/Application Support/JetBrains/Toolbox/scripts" $PATH
       end
 
+      # PostgreSQL (via Postgres.app) on macOS
+      if test -d /Applications/Postgres.app/Contents/Versions/latest/bin
+        set -gx PATH /Applications/Postgres.app/Contents/Versions/latest/bin $PATH
+      end
+
       # Git commit signing
       set -gx GPG_TTY (tty)
 
