@@ -72,8 +72,9 @@ function bootstrap_homemanager -d "installs home-manager and activates configura
   link_file $DF_ROOT/home-manager/home.nix $HOME/.config/nixpkgs/home.nix prev
     or fail home-manager
 
-  # fish config will now be managed by home-manager
-  rm -f $HOME/.config/fish/config.fish
+  # fish config will now be managed by home-manager, avoid any conflicts
+  # causing home-manager installation to fail.
+  rm -rf $HOME/.config/fish
 
   home-manager switch
 end
