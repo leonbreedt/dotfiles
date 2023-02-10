@@ -1,5 +1,10 @@
 # dotfiles
 
+**DISCLAIMER**: There may be some rough edges. If you are not comfortable with
+[Nix](https://nixos.org), I would not recommend using this repo in case you run
+into any issues. It also depends on a private repo as a submodule in which more
+sensitive information is stored.
+
 ## Setup
 
 ### macOS
