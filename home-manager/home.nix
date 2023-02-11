@@ -6,7 +6,6 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
 
   home.stateVersion = "22.11";
 
-
   home.username = userName;
   home.homeDirectory = if pkgs.stdenv.isLinux then "/home/leon" else "/Users/${userName}";
 
@@ -99,6 +98,9 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
       gs = "git status";
       gt = "git tag";
       cat = "bat -p";
+      du = "dust -r";
+      kc = "kubectl";
+      less = "bat -p";
     };
     shellInit = ''
       if test -e /nix/var/nix/profiles/default/etc/profile.d/nix.fish
