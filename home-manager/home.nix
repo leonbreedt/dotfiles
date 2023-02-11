@@ -1,12 +1,14 @@
 { config, pkgs, ... }:
 
+let userName = if builtins.pathExists "/Applications/Self Service.app" then "i070279" else "leon"; in
 {
   nixpkgs.config.allowUnfree = true;
 
   home.stateVersion = "22.11";
 
-  home.username = "leon";
-  home.homeDirectory = if pkgs.stdenv.isLinux then "/home/leon" else "/Users/leon";
+
+  home.username = userName;
+  home.homeDirectory = if pkgs.stdenv.isLinux then "/home/leon" else "/Users/${userName}";
 
   home.sessionVariables = {
     TERM = "xterm-256color";
@@ -22,7 +24,7 @@
   };
 
   # managed config files
-  home.file.".gnupg/gpg-agent.conf".source = if pkgs.stdenv.isLinux then ./config/gpg-agent-linux else ./config/gpg-agent-darwin;
+  home.file.".gnupg/gpg-agent.conf".source = if pkgs.stdenv.isLinux then ./config/gpg-agent-linux else ./config/gpg-agent-darwin-${userName};
   home.file.".gnupg/pubring.gpg".source = ../private/pubring.gpg;
   home.file.".gnupg/secring.gpg".source = ../private/secring.gpg;
   home.file.".gnupg/trustdb.gpg".source = ../private/trustdb.gpg;
@@ -146,6 +148,7 @@
     enable = true;
     userName = "Leon Breedt";
     userEmail = "leon@sector42.io";
+    lfs.enable = true;
     signing = {
       key = "8EDF16F241C988805D6019FDC7FC3270F57FA785";
       signByDefault = true;
