@@ -127,6 +127,11 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
 
       # CDPATH for work
       set -gx CDPATH $HOME/SAPDevelop
+
+      # brew if installed
+      if test -x /opt/homebrew/bin/brew
+        eval (/opt/homebrew/bin/brew shellenv)
+      end
     '';
     plugins = [
       {
