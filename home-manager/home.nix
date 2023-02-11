@@ -173,6 +173,7 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
       color.pager = true;
       core.askPass = "";
       credential.helper = "store";
+      credentialstore.locktimeoutms = 0;
       github.user = "leonbreedt";
       push.default = "tracking";
       pull.rebase = true;
