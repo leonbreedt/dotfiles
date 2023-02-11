@@ -76,6 +76,9 @@ function bootstrap_homemanager -d "installs home-manager and activates configura
   # causing home-manager installation to fail.
   rm -rf $HOME/.config/fish
 
+  # also set priority of fish in case it conflicts with home-manager
+  nix-env --set-flag priority 0 fish-3.6.0
+
   home-manager switch
 end
 

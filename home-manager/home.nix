@@ -81,6 +81,8 @@
 
   programs.home-manager.enable = true;
 
+  programs.go.enable = true;
+
   programs.fish = {
     enable = true;
     shellAliases = {
