@@ -30,6 +30,8 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
   home.file.".ssh/id_rsa".source = ../private/id_rsa;
   home.file.".ssh/id_rsa.pub".source = ../private/id_rsa.pub;
   home.file.".git-credentials".source = ../private/git-credentials;
+  home.file.".config/git/work".source = ../private/git-work;
+  home.file.".config/git/personal".source = ../private/git-personal;
 
   # user-specific packages
   home.packages = with pkgs; [
@@ -153,13 +155,7 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
 
   programs.git = {
     enable = true;
-    userName = "Leon Breedt";
-    userEmail = "leon@sector42.io";
     lfs.enable = true;
-    signing = {
-      key = "8EDF16F241C988805D6019FDC7FC3270F57FA785";
-      signByDefault = true;
-    };
     aliases = {
       co = "checkout";
       ca = "commit --all";
@@ -169,6 +165,20 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
       st = "status";
       root = "rev-parse --show-toplevel";
     };
+    includes = [
+      {
+        path = "~/.config/git/personal";
+        condition = "gitdir:~/";
+      }
+      {
+        path = "~/.config/git/personal";
+        condition = "gitdir:~/Source/";
+      }
+      {
+        path = "~/.config/git/work";
+        condition = "gitdir:~/SAPDevelop/";
+      }
+    ];
     extraConfig = {
       branch.autosetuprebase = "always";
       color.ui = true;
