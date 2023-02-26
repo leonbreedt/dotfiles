@@ -18,7 +18,7 @@ confirm_os_window_close 0
 macos_thicken_font 0.75
 
 # black
-color0   #282c34
+color0   #5d677a
 color8   #5d677a
 
 # red
