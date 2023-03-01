@@ -30,6 +30,8 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
   home.file.".ssh/id_rsa".source = ../private/id_rsa;
   home.file.".ssh/id_rsa.pub".source = ../private/id_rsa.pub;
   home.file.".ssh/config".source = ../private/ssh-config;
+  home.file.".ssh/ps_jaas_slave_01_rsa".source = ../private/ps-jenkins-worker-01.key;
+  home.file.".ssh/ps_jaas_slave_02_rsa".source = ../private/ps-jenkins-worker-02.key;
   home.file.".git-credentials".source = ../private/git-credentials;
   home.file.".config/git/work".source = ../private/git-work;
   home.file.".config/git/personal".source = ../private/git-personal;
@@ -71,6 +73,7 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
     cascadia-code
 
     # work
+    vault
     jdk
     maven
     nodejs-16_x
