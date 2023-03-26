@@ -74,6 +74,7 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
 
     # work
     kubectl
+    kubelogin-oidc
     vault
     jdk
     maven
