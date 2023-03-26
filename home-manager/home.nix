@@ -73,6 +73,7 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
     cascadia-code
 
     # work
+    kubectl
     vault
     jdk
     maven
