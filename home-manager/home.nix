@@ -80,7 +80,7 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
     kubectl
     kubelogin-oidc
     vault
-    jdk
+    jdk17
     maven
     nodejs-16_x
     git-lfs
