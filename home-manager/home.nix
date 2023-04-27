@@ -4,6 +4,10 @@ let userName = if builtins.pathExists "/Applications/Self Service.app" then "i07
 {
   nixpkgs.config.allowUnfree = true;
 
+  manual.manpages.enable = false;
+  manual.html.enable = false;
+  manual.json.enable = false;
+
   home.stateVersion = "22.11";
 
   home.username = userName;
